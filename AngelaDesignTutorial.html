@@ -1,0 +1,145 @@
+<!-- 
+ https://www.youtube.com/watch?v=68O6eOGAGqA
+ Angela Design YouTube Channel
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,800,900&display=swap" rel="stylesheet">
+    <title>Angela Design Tutorial</title>
+    <!--CSS-->
+    <!--CSS-->
+    <!--CSS-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --main-radius: 5px;
+            --main-padding: 5px;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        .container {
+            height: 100vh;
+            display: grid;
+            /* Four Columns */
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            /* 4 */
+            grid-template-rows: 0.2fr 1.5fr 1.2fr 0.8fr;
+            /* 4 */
+            grid-template-areas:
+                "nav nav nav nav"
+                "sidebar main main main"
+                "sidebar content1 content2 content3"
+                "sidebar footer footer footer";
+            gap: 0.2rem;
+
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 12px;
+            color: #004d40;
+            text-align: center;
+        }
+
+        nav {
+            grid-area: nav;
+            background: #e4d659;
+            border-radius: var(--main-radius);
+            padding-top: var(--main-padding);
+        }
+
+        main {
+            grid-area: main;
+            background: #6fa1ec;
+            border-radius: var(--main-radius);
+            padding-top: var(--main-padding);
+        }
+
+        #sidebar {
+            grid-area: sidebar;
+            background: #18ffff;
+            border-radius: var(--main-radius);
+            padding-top: var(--main-padding);
+        }
+
+        #content1 {
+            grid-area: content1;
+            background: #7ee904;
+            border-radius: var(--main-radius);
+            padding-top: var(--main-padding);
+        }
+
+        #content2 {
+            grid-area: content2;
+            background: #64ffda;
+            border-radius: var(--main-radius);
+            padding-top: var(--main-padding);
+        }
+
+        #content3 {
+            grid-area: content3;
+            background: #d3bb33;
+            border-radius: var(--main-radius);
+            padding-top: var(--main-padding);
+        }
+
+        footer {
+            grid-area: footer;
+            background: #42bd9e;
+            border-radius: var(--main-radius);
+            padding-top: var(--main-padding);
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 550px) {
+            .container {
+                /* One Columns */
+                grid-template-columns: 1fr;
+                /* 7 */
+                grid-template-rows: 0.4fr 0.4fr 2.2fr 1.2fr 1.2fr 1.2fr 1fr;
+                /* 7 */
+                grid-template-areas:
+                    "nav"
+                    "sidebar"
+                    "main"
+                    "content1"
+                    "content2"
+                    "content3"
+                    "footer";
+            }
+        }
+    </style>
+    <!--CSS-->
+    <!--CSS-->
+    <!--CSS-->
+</head>
+
+
+<body>
+    <!--body-->
+    <!--body-->
+    <!--body-->
+    <div class="container">
+        <nav>Navbar</nav>
+        <main>Main</main>
+        <div id="sidebar">Sidebar</div>
+        <div id="content1">Content1</div>
+        <div id="content2">Content2</div>
+        <div id="content3">Content3</div>
+        <footer>Footer</footer>
+    </div>
+    <!--body-->
+    <!--body-->
+    <!--body-->
+</body>
+
+</html>
