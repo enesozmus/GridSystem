@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aligning Grid Items</title>
+    <!--CSS-->
+    <!--CSS-->
+    <!--CSS-->
+    <style>
+        :root {
+            --clr-dark: #0f172a;
+            --clr-light: #f1f5f9;
+            --clr-accent: #e11d48;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 5em 0 0 0;
+            padding: 0;
+            line-height: 1.6;
+            word-spacing: 1.4px;
+            font-family: 'Roboto', sans-serif;
+            color: var(--clr-dark);
+            background-color: var(--clr-light);
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            border: 10px solid var(--clr-dark);
+        }
+
+        .item {
+            padding: 0.5em;
+            background-color: #fb7185;
+            font-weight: 700;
+            color: var(--clr-light);
+            border: 10px solid var(--clr-accent);
+        }
+
+        /* Grid System */
+        .container {
+            display: grid;
+            /* grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 100px);
+
+            justify-items: end;
+            align-items: start; */
+
+            /* grid-template-columns: repeat(2, 100px);
+            grid-template-rows: repeat(2, 100px);
+            height: 600px;
+            justify-content: space-evenly;
+            align-content: space-evenly; */
+
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-rows: repeat(4, 100px);
+            
+        }
+        /* .item-1 {
+            justify-self: center;
+            align-self: stretch;
+        } */
+    </style>
+    <!--CSS-->
+    <!--CSS-->
+    <!--CSS-->
+</head>
+
+<body>
+    <div class="container">
+        <div class="item item-1">1</div>
+        <div class="item item-2">2</div>
+        <div class="item item-3">3</div>
+        <div class="item item-4">4</div>
+    </div>
+</body>
+
+</html>
+
+
+<!-- 
+ 
+🟥🟥🟥 Aligning Grid Items 🟥🟥🟥
+🔴 CSS’s Box Alignment Module complements CSS Grid to allow items to be aligned along the row of column axis.
+🔴 'justify-items' and 'justify-self' align items along the row axis, and 'align-items' and 'align-self' align items along the column axis.
+
+🔵 justify-items and align-items are applied to the grid container and support the following values:
+- auto
+- normal
+- start
+- end
+- center
+- stretch
+- baseline
+- first baseline
+- last baseline
+
+
+🟧 justify-items: start
+→ Items are positioned at the start of the row axis (row line number 1).
+
+        .item {
+            justify-items: start
+        }
+
+
+🟧 justify-items: center
+→ Items are positioned at the center of the row axis.
+
+        .item {
+            justify-items: center
+        }
+
+
+🟧 justify-items: end
+→ Items are positioned at the end of the row axis.
+
+        .item {
+            justify-items: end
+        }
+
+
+🟧 justify-items: stretch
+→ stretch is the default value.
+→ Items are stretched across the entire row axis. 
+
+        .item {
+            justify-items: stretch
+        }
+
+
+🟨 align-items: start
+→ Items are positioned at the start of the column axis (column line 1).
+
+        .item {
+            align-items: start
+        }
+
+
+🟨 align-items: center
+→ Items are positioned at the center of the column axis.
+
+        .item {
+            align-items: center
+        }
+
+
+🟨 align-items: end
+→ Items are positioned at the end of the column axis.
+
+        .item {
+            align-items: end
+        }
+
+
+🟨 align-items: stretch
+→ Items are stretched across the entire column axis.
+
+        .item {
+            align-items: stretch
+        }
+
+
+🔳 justify-items: center
+🔳 align-items:   center
+→ Items are positioned at the center of the row and column axes.
+
+        .item {
+            justify-items: center
+            align-items:   center
+        }
+
+❗️ ❗️ ❗️ KALINAN YER:
+https://learncssgrid.com/#aligning-grid-items
+Individual items can be self-aligned with the align-self and justify-self properties. These properties support the following valuse:
+
+-->

@@ -5,56 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grid System</title>
-    <!--CSS-->
-    <!--CSS-->
-    <!--CSS-->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            background-color: green;
-        }
-
-
         .container {
             display: grid;
-            grid-template-columns: auto auto auto;
-            grid-template-rows: 1fr 1fr 8fr;
-            gap: 8px;
-
-            background-color: burlywood;
-            padding: 20px;
-        }
-
-
-        .item {
-            background-color: brown;
-            padding: 15px;
-            color: white;
-            font-size: 27px;
-        }
-
-
-        .item-1 {
-            /* grid-column-start: 2;
-            grid-column-end: 4; */
-            grid-column: 2 / 4;
-            /* grid-row-start: 2;
-            grid-row-end: 3; */
-            grid-row: 2 / 3;
         }
     </style>
-    <!--CSS-->
-    <!--CSS-->
-    <!--CSS-->
 </head>
-
 
 <body>
     <!--GRID CONTAINER-->
@@ -76,9 +32,9 @@
     <!--GRID CONTAINER-->
 </body>
 
-
 </html>
 
+<!--NOTES-->
 <!--NOTES-->
 <!--NOTES-->
 <!--
@@ -105,14 +61,28 @@
 → It’s the direct parent of all the grid items.
 → The element on which "display: grid;" is applied.
 
-→ You can create a grid container by setting the display property with a value of 'grid' or 'inline-grid'.
-→ In this example container is the grid container.
+→ When working with grids in CSS we will have a concept called grid container.
+→ This concept  refers to the parent element that wraps the items inside this element is responsible for creating a grid model with columns and rows.
+→ Here I create a container class that takes on this role.
+
+        <div class="container">
+        </div>
+
+→ On the CSS side,  I declare 'display: grid;' to manage the number of rows and columns.
+
+        .container {
+            display: grid;
+        }
+
+
+⭕️ In this example container is the grid container.
 
         .container {
             display: grid;
         }
 
         <div class="container">
+            /* If I create the first item, this item will be located right in the position of the first quadrilateral. */
             <div class="item item-1"> </div>
             <div class="item item-2"> </div>
             <div class="item item-3"> </div>
@@ -121,6 +91,7 @@
 
 🟦🟦 display 🟦
 → Defines the element as a "grid container" and establishes "a new grid formatting context" for its contents.
+→ You can create a grid container by setting the display property with a value of 'grid' or 'inline-grid'.
 
 🟧 display: grid;
 → Grid items are placed in rows by default and span the full width of the grid container.
@@ -177,7 +148,7 @@
 → The fr unit allows you to set the size of a track as a fraction of the free space of the grid container.
 → fr is calculated based on the remaining space when combined with other length values.
 
-        container {
+        .container {
             grid-template-columns: 1fr 1fr 1fr;
             grid-template-columns: 3rem 25% 1fr 2fr;
             1fr = ( (width of grid) - (3rem) - (25% of width of grid) ) / 3
@@ -192,8 +163,12 @@
 → The minmax() function accepts 2 arguments: the first is the minimum size of the track and the second the maximum size.
 → In this example, the first row track is set to have a minimum height of 100px, but its maximum size of auto will allow the row track to grow it the content is taller than 100px.
 
-        container {
-            grid-template-rows:    minmax(100px, auto);
+        .container {
+            /* 3 sütun oluştur
+            /* ilk ve son sütuna sabit 120px ata
+            /* ortadaki sütunu 150px den küçük olmayacak şekilde kalan boşluğun tamamını kullanabilecek şekilde ayarla
+            /* overflow durumu oluşabilir
+            grid-template-columns: 120px minmax(150px, auto) 120px;
         }
 
 
@@ -205,7 +180,7 @@
 🟧 repeat()
 → The repeat() notation accepts 2 arguments: the first represents the number of times the defined tracks should repeat, and the second is the track definition.
 
-        container {
+        .container {
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows:    repeat(4, 100px);
             grid-template-columns: 30px repeat(3, 1fr) 30px;
@@ -217,7 +192,7 @@
 → The grid-column-gap and grid-row-gap properties create gutters between columns and rows.
 → Grid gaps are only created in between columns and rows, and not along the edge of the grid container 🙌.
 
-        container {
+        .container {
             grid-row-gap: 20px;
             grid-column-gap: 5rem;
             /* [grid-row-gap] [grid-column-gap] */
@@ -233,7 +208,7 @@
 → Each line, starting from the start of the track and in the direction of the grid, is numbered incrementally starting from 1.
 → grid-column-start/grid-row-start is the line where the item begins, and grid-column-end/grid-row-end is the line where the item ends.
 
-        container {
+        .container {
             grid-row-start:    2;
             grid-row-end:      3;
             /* [grid-row-start] / [grid-row-end] */
@@ -276,48 +251,82 @@
 
 
 🟥🟥 Naming Grid Lines 🟥
-→ https://learncssgrid.com/#naming-grid-lines
-
-
-
-
-
-
-
-
-
-
-
-
-🟪 grid-area
-→ grid-area is shorthand for grid-row-start, grid-column-start, grid-row-end and grid-column-end.
-→ As a way to assign a name to the item:
-
-        .item-a {
-            grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
-            grid-area: header;
-            grid-area: 2 / 2 / 3 / 3;
-            grid-area: 1 / 1 / span 3 / span 3;
-        }
-
-🟥 grid-template-areas
-
-https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-template-areas
-
-→ Defines a grid template by referencing the names of the grid areas which are specified with the grid-area property.
-→ Repeating the name of a grid area causes the content to span those cells.
-→ A period signifies an empty cell.
+→ Grid lines can be named when defining the grid with the grid-template-rows and grid-template-columns properties.
+→ Line names can then be referenced to position grid items.
+→ Assign names to grid lines when defining your grid with the grid-template-rows and grid-template-columns properties.
+→ Assigned line names must be wrapped in square brackets [name-of-line] and placed relative to the grid tracks.
 
         .container {
-            grid-template-areas: 
-                "<grid-area-name> | . | none | ..."
-                "...";
+            grid-template-rows:    [row-1-start] 1fr [row-2-start] 1fr [row-2-end];
+            grid-template-columns: [col-1-start] 1fr [col-2-start] 1fr [col-3-start] 1fr [col-3-end];
+            grid-template-rows:    [row-start row-1-start] 1fr [row-1-end row-2-start] 1fr [row-2-end row-end];
         }
 
-        .item-a { grid-area: header; }
-        .item-b { grid-area: main; }
-        .item-c { grid-area: sidebar; }
-        .item-d { grid-area: footer; }
+
+
+🟥🟥 Positioning Items by Line Names 🟥
+→ With named grid lines, items can be positioned by line names and numbers.
+→ Referenced line names should not be wrapped in square brackets.
+
+        .item {
+            grid-row-start:    row-2-start;
+            grid-row-end:      row-end;
+            grid-column-start: col-2-start;
+            grid-column-end:   col-end;
+
+            grid-row:    row-2-start / row-end;
+            grid-column: col-2-start / col-end;
+        }
+
+
+🟥🟥 Naming and Positioning Items by Grid Lines with the Same Name 🟥
+→ Lines can be assigned the same name with the repeat() function. This can save you time from having to name each line in track definitions.
+→ Line name assignments can also be included within the repeat() function.
+→ ❗️ Lines with the same name are also assigned the a line’s position/name’s occurrence number, which allows it to be uniquely identified from another line with the same name.
+
+        .container {
+            grid-template-rows: repeat(3, [row-start] 1fr [row-end]);
+            grid-template-columns: repeat(3, [col-start] 1fr [col-end]);
+
+            grid-row:    row-start 2 / row-end 3;
+            grid-column: col-start / col-start 3;
+        }
+
+
+
+🟥🟥 Naming and Positioning Items by Grid Areas 🟥
+→ Like grid line names, grid areas can also be named with the grid-template-areas property.
+→ Names can then be referenced to position grid items.
+→ Sets of names should be surrounded in single or double quotes, and each name separated by a whitespace.
+→ Each set of names defines a row, and each name defines a column.
+
+🟧 grid-template-areas
+→ Defines a grid template by referencing the names of the grid areas which are specified with the 'grid-area' property.
+→ Repeating the name of a grid area causes the content to span those cells.
+→ A period signifies an empty cell.
+        .container {
+            grid-template-areas:    "header header"
+                                    "content sidebar"
+                                    "footer footer";
+
+            grid-template-rows:    150px 1fr 100px;
+            grid-template-columns: 1fr 200px;
+        }
+
+        header {
+            grid-area: header;
+        }
+        content {
+            grid-area: content;
+        }
+        sidebar {
+            grid-area: sidebar;
+        }
+        footer {
+            grid-area: footer;
+        }
+
+        🟦       
         .container {
             display: grid;
             grid-template-columns: 50px 50px 50px 50px;
@@ -326,5 +335,72 @@ https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-template-areas
             "header header header header"
             "main main . sidebar"
             "footer footer footer footer";
+        }
+        .item-a { grid-area: header; }
+        .item-b { grid-area: main; }
+        .item-c { grid-area: sidebar; }
+        .item-d { grid-area: footer; }
+
+
+
+🟥🟥 Implicit Grid 🟥
+→ An implicit grid is created when a grid needs to position items outside of the explicit grid because there isn’t enough space for items in the explicitly defined tracks or you decide to position something outside of the explicit grid.
+→ Those items are then auto-placed in the implicit grid.
+→ The implicit grid can be defined using the 'grid-auto-rows', 'grid-auto-columns', and 'grid-auto-flow' properties.
+
+        .container {
+                /* ilk row 70 px */
+            grid-template-rows:    70px;
+            grid-template-columns: repeat(2, 1fr);
+                /* kalan row'lar */
+                /* ikinci row 140px */
+            grid-auto-rows:        140px;
+        }
+
+🟧 grid-auto-flow 
+→ The default flow (direction) of a grid is row.
+→ A grid’s flow can be changed to column.
+
+        .container {
+            grid-auto-flow: row;
+            grid-auto-flow: column;
+        }
+
+
+
+🟥🟥 Implicitly Named Grid Areas 🟥
+→ Grid lines can generally be named whatever you’d like, but assigning names ending in -start and -end comes with added benefits—they implicitly create named grid areas, which can be referenced for positioning.
+
+        .container {
+            grid-template-rows:    [outer-start] 1fr [inner-start] 1fr [inner-end] 1fr [outer-end];
+            grid-template-columns: [outer-start] 1fr [inner-start] 1fr [inner-end] 1fr [outer-end];
+        }
+
+
+
+🟥🟥 Implicitly Named Grid Lines 🟥
+→ Implicitly named grid lines work in reverse to implicitly named grid areas—naming grid areas implicitly assigns names to grid lines.
+→ Named grid areas will implicitly name the grid lines along the edges of the area. Those grid lines will be named based on the area name and suffixed with -start or -end.
+
+        .container {
+            grid-template-areas:   "header header"
+                        "content sidebar"
+                        "footer footer";
+            grid-template-rows:    80px 1fr 40px;
+            grid-template-columns: 1fr 200px;
+
+            grid-row-start:    header-start;
+            grid-row-end:      content-start;
+            grid-column-start: footer-start;
+            grid-column-end:   sidebar-end;
+        }
+
+
+
+🟥🟥 Layering Grid Items 🟥
+→ Grid items can be layered/stacked by properly positioning them and assigning 'z-index' when necessary.
+
+        .item-1 { 
+            z-index: 1; 
         }
 -->

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 200px 250px 150px auto;
+            grid-template-areas: 
+            "   header     header      header   "
+            "   fYellow    fPurple     fRed     "
+            "   signUp     signUp      signUp   "
+            "   content    content     content  "
+            ;
+
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 36px;
+            text-align: center;
+        }
+
+        .header {
+            grid-area: header;
+            background-color: bisque;
+        }
+
+        .feature-yellow {
+            grid-area: fYellow;
+            background-color: yellow;
+
+        }
+
+        .feature-purple {
+            grid-area: fPurple;
+            background-color: purple;
+        }
+
+        .feature-red {
+            grid-area: fRed;
+            background-color: red;
+        }
+
+        .sign-up {
+            grid-area: signUp;
+            background-color: coral;
+        }
+
+        .content {
+            grid-area: content;
+            background-color: lawngreen;
+        }
+
+        @media only screen and (max-width: 1023px) {
+            main {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: 100px auto 150px 150px;
+                grid-template-areas: 
+                "   header      header   "
+                "   content     content  "
+                "   signUp      fYellow  "
+                "   fRed        fPurple  "
+                ;
+            }
+        }
+        @media only screen and (max-width: 767px) {
+            main {
+                grid-template-columns: 1fr;
+                grid-template-rows: 100px auto repeat(4, 100px);
+                grid-template-areas: 
+                "   header  "
+                "   content "
+                "   signUp  "
+                "   fYellow "
+                "   fRed    "
+                "   fPurple    "
+                ;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="header">header</div>
+        <div class="feature-yellow">feature-yellow</div>
+        <div class="feature-purple">feature-purple</div>
+        <div class="feature-red">feature-red</div>
+        <div class="sign-up">sign-up</div>
+        <div class="content">content</div>
+    </main>
+</body>
+
+</html>

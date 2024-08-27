@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lun Dev Tutorial</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 250px);
+            justify-content: center;
+            gap: 20px;
+        }
+        .item1 {
+            background-color: bisque;
+        }
+        .item2 {
+            background-color: darkgrey;
+        }
+        .item3 {
+            background-color: indianred;
+        }
+        .item4 {
+            background-color: aquamarine;
+        }
+        .item5 {
+            background-color: brown;
+        }
+        .item6 {
+            background-color: coral;
+        }
+        .item7 {
+            background-color: dodgerblue;
+        }
+        .item8 {
+            background-color:fuchsia;
+        }
+
+       /* @media only screen and (max-width: 1023px) {
+            .container {
+                grid-template-columns: repeat(3, 250px);
+
+            }
+        }
+        @media only screen and (max-width: 767px) {
+            .container {
+                grid-template-columns: repeat(2, 250px);
+
+            }
+        }  */
+    </style>
+    <!-- 
+     Study 1
+     Study 1
+     Study 1
+        .container {
+            display: grid;
+            height: 100%;
+            width: 100%;
+            grid-template-columns: repeat(5, 20%);
+            grid-template-rows: repeat(5, 150px);
+        }
+        .item1 {
+            background-color: aqua;
+
+            /* 
+                ⭕️ git ikinci kolon
+                        üçüncü satırdaki dörtgene otur
+                grid-column: 2;
+                grid-row: 3;
+            */
+            /*
+                ⭕️ git ikinci kolonun başlangıcından dördüncü kolonun başlangınıcına kadar
+                        üçüncü satıra otur
+            */
+            grid-column: 2 / 4;
+            grid-row: 3;
+            /* grid-area: 3 / 2 / 4 / 4; */
+        }
+        .item2 {
+            background-color: brown;
+            grid-column: 2 / 4;
+            grid-row: 4;
+        }
+        .item3 {
+            background-color: red;
+            grid-column: 3 / 5;
+            /* ⚠️ Her ikisi de 1 olarak atanmazsa sıralı şekilde devam ederler ve üst üste getirememiş olursunuz */
+            grid-row: 1;
+            /* z-index: 2; */
+        }
+        .item4 {
+            background-color: blue;
+            grid-column: 4 / 6;
+            /* ⚠️ Her ikisi de 1 olarak atanmazsa sıralı şekilde devam ederler ve üst üste getirememiş olursunuz */
+            grid-row: 1;
+            /* ⚠️ index değeri büyük olan daha üstte görünür */
+            z-index: 1;
+        }
+    Study 1
+    Study 1
+    Study 1
+    -->
+    <!-- 
+    Study 2
+    Study 2
+    Study 2
+        .container {
+            display: grid;
+            height: 100%;
+            width: 100%;
+            grid-template-columns: repeat(5, 20%);
+            grid-template-rows: repeat(5, 150px);
+            /* grid-template-areas:
+                ".  .   .   .   ."
+                ".  .   .   .   ."
+                ".  .   .   .   ."
+                ".  .   .   .   ."
+                ".  .   .   .   ."; */
+            grid-template-areas:
+                ".  .   item3   item3   item4"
+                ".  .   .   .   ."
+                ".  item1   item1   .   ."
+                ".  item2   item2   .   ."
+                ".  .   .   .   .";
+        }
+        .item1 {
+            grid-area: item1;
+            background-color: aqua;
+        }
+        .item2 {
+            grid-area: item2;
+            background-color: brown;
+        }
+        .item3 {
+            grid-area: item3;
+            background-color: red;
+            z-index: 1;
+        }
+        .item4 {
+            grid-area: 1 / 4 / 2 / 6;
+            background-color: blue;
+        }
+    Study 3
+    Study 3
+    Study 3
+     -->
+</head>
+
+<body>
+    <!--GRID CONTAINER-->
+    <div class="container">
+        <!--GRID ITEMS .item{Grid Item $}*9 -->
+        <div class="item item1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident nostrum ullam enim consequatur qui recusandae eaque. Nostrum quaerat assumenda consequatur aliquam. Quaerat asperiores veritatis quidem dicta incidunt aperiam distinctio deserunt!</div>
+        <div class="item item2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nesciunt necessitatibus in eius rerum distinctio, dignissimos optio, ipsa porro alias autem! Quis, vel tenetur. Ipsa atque reprehenderit mollitia a distinctio?</div>
+        <!-- 
+        ❗️ Her eklenen yeni item eğer boşsa en başa yani 1. kolon 1. satır dörtgenine oturur
+        -->
+        <div class="item item3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi sed voluptates ex nulla quo praesentium porro minus, eligendi eum pariatur magnam mollitia rem aspernatur dolorum error exercitationem minima quam numquam.</div>
+        <div class="item item4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa vero sed possimus hic aliquam ullam facere. Qui, expedita? Inventore, asperiores dolorem aut itaque perferendis iste eaque nisi assumenda illo libero!</div>
+        <div class="item item5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia eveniet, totam, ullam quod voluptates sapiente aliquid autem neque sint quasi cumque nulla distinctio ea atque. Voluptatem itaque ab commodi magnam!</div>
+        <div class="item item6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid laboriosam suscipit itaque exercitationem ipsam at amet unde animi nulla delectus dolorum, soluta, quod ipsum voluptatem, ex rem optio ab nobis!</div>
+        <div class="item item7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae harum debitis modi officiis vero quaerat numquam facere reiciendis, voluptate, quam totam commodi aliquid quasi aliquam quidem unde voluptatum ullam? Unde.</div>
+        <div class="item item8">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta earum, blanditiis rem, deserunt perferendis minima ut, et tempora repellendus cumque omnis quaerat est architecto modi pariatur consectetur ipsam impedit culpa.</div>
+    </div>
+</body>
+
+</html>
